@@ -1,6 +1,6 @@
 {
-    "name": "xiaolin/laravel-elasticsearch",
-    "description": "config",
+    "name": "xiaolin/laravel-es",
+    "description": "es",
     "type": "library",
     "license": "MIT",
     "authors": [
@@ -21,7 +21,8 @@
     },
     "require": {
         "php": ">=7.0",
-        "symfony/yaml": "^4.1"
+        "symfony/yaml": "^4.1",
+        "xiaolin/support-arr": "^0.0.1"
     },
     "require-dev": {
         "symfony/var-dumper": "^4.1",
