@@ -21,8 +21,7 @@
     },
     "require": {
         "php": ">=7.0",
-        "symfony/yaml": "^4.1",
-        "xiaolin/support-arr": "^0.0.1"
+        "laravel/scout": "~4.0"
     },
     "require-dev": {
         "symfony/var-dumper": "^4.1",
