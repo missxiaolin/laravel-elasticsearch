@@ -21,7 +21,8 @@
     },
     "require": {
         "php": ">=7.0",
-        "laravel/scout": "~4.0"
+        "laravel/scout": "~4.0",
+        "elasticsearch/elasticsearch": "~6.0"
     },
     "require-dev": {
         "symfony/var-dumper": "^4.1",
