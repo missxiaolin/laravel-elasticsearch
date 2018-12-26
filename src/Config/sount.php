@@ -8,6 +8,7 @@
 
 return [
     'elasticsearch' => [
+        'prefix' => env('ELASTICSEARCH_PREFIX', 'laravel_'),
         'index' => env('ELASTICSEARCH_INDEX', 'laravel'),
         'hosts' => [
             env('ELASTICSEARCH_HOST', 'http://localhost'),
