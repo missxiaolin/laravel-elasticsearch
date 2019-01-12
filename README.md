@@ -23,7 +23,7 @@ config/app.php
      * Elasticsearch全文搜索
      */
     Laravel\Scout\ScoutServiceProvider::class,
-    Baijunyao\LaravelScoutElasticsearch\ElasticsearchServiceProvider::class,
+    Lin\LaravelScoutElasticsearch\ElasticsearchServiceProvider::class,
 ],
 ```
 发布配置项;  
