@@ -73,21 +73,21 @@ class ImportCommand extends Command
         // 创建索引
         $type = $model->searchableAs();
         $data = [
-            'index' => config('scout.elasticsearch.prefix').$type
+            'index' => config('scout.elasticsearch.prefix') . $type
         ];
 
         $client = $this->getElasticsearchClient();
 
         // 判断索引是否存在 如果不存在 则初始索引
-        if (! $client->indices()->exists($data)) {
+        if (!$client->indices()->exists($data)) {
             $settings = config('scout.elasticsearch.settings');
-            if (! empty($settings)) {
+            if (!empty($settings)) {
                 $data['body']['settings'] = $settings;
             }
             $client->indices()->create($data);
         }
 
-        if (! empty($columns)) {
+        if (!empty($columns)) {
             $data['body'] = [
                 '_source' => array('enabled' => true),
                 'properties' => $columns,

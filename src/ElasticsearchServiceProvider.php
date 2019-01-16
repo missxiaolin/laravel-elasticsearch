@@ -23,7 +23,7 @@ class ElasticsearchServiceProvider extends ServiceProvider
             ]);
         }
 
-        app(EngineManager::class)->extend('elasticsearch', function($app) {
+        app(EngineManager::class)->extend('elasticsearch', function ($app) {
             return new ElasticsearchEngine();
         });
     }
@@ -36,7 +36,7 @@ class ElasticsearchServiceProvider extends ServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(
-            __DIR__.'/Config/laravel-scout-elasticsearch.php', 'scout'
+            __DIR__ . '/Config/laravel-scout-elasticsearch.php', 'scout'
         );
     }
 }
