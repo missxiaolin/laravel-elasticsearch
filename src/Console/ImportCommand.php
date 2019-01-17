@@ -2,6 +2,7 @@
 
 namespace Lin\LaravelScoutElasticsearch\Console;
 
+use Exception;
 use Illuminate\Console\Command;
 use Lin\LaravelScoutElasticsearch\ElasticsearchClientTrait;
 
@@ -35,6 +36,7 @@ class ImportCommand extends Command
     /**
      * Execute the console command.
      *
+     * @throws Exception
      * @return mixed
      */
     public function handle()
@@ -84,16 +86,25 @@ class ImportCommand extends Command
             if (!empty($settings)) {
                 $data['body']['settings'] = $settings;
             }
-            $client->indices()->create($data);
+            try {
+                $client->indices()->create($data);
+            } catch (Exception $ex) {
+                throw new Exception('初始化失败', 500);
+            }
         }
 
+        // 创建索引
         if (!empty($columns)) {
             $data['body'] = [
                 '_source' => array('enabled' => true),
                 'properties' => $columns,
             ];
             $data['type'] = $type;
-            $client->indices()->putMapping($data);
+            try{
+                $client->indices()->putMapping($data);
+            }catch (Exception $ex){
+                throw new Exception('创建索引失败', 500);
+            }
         }
 
         // 导入数据
