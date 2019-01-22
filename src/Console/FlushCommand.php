@@ -40,9 +40,6 @@ class FlushCommand extends Command
     public function handle()
     {
         $class = $this->argument('model');
-        $this->call('scout:flush', [
-            'model' => $class
-        ]);
         $model = new $class;
         $index = [
             'index' => config('scout.elasticsearch.prefix') . $model->searchableAs()
