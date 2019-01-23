@@ -13,7 +13,7 @@ class FlushCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'elasticsearch:flush {model}';
+    protected $signature = 'elasticsearch:flush {--model=}';
 
     /**
      * The console command description.
