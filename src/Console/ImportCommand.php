@@ -14,7 +14,7 @@ class ImportCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'elasticsearch:import {model}';
+    protected $signature = 'elasticsearch:import {--model=}';
 
     /**
      * The console command description.
