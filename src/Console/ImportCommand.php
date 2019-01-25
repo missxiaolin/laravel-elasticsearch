@@ -41,7 +41,10 @@ class ImportCommand extends Command
      */
     public function handle()
     {
-        $class = $this->argument('model');
+        $class = $this->option('model');
+        if (!$class) {
+            throw new Exception('model is require', 300);
+        }
         $model = new $class;
         // 主键id
         $primaryKey = $model->getKeyName();
@@ -100,9 +103,9 @@ class ImportCommand extends Command
                 'properties' => $columns,
             ];
             $data['type'] = $type;
-            try{
+            try {
                 $client->indices()->putMapping($data);
-            }catch (Exception $ex){
+            } catch (Exception $ex) {
                 throw new Exception('创建索引失败', 500);
             }
         }

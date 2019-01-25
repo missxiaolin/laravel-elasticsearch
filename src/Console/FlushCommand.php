@@ -2,6 +2,7 @@
 
 namespace Lin\LaravelScoutElasticsearch\Console;
 
+use Exception;
 use Illuminate\Console\Command;
 use Lin\LaravelScoutElasticsearch\ElasticsearchClientTrait;
 
@@ -35,11 +36,16 @@ class FlushCommand extends Command
     /**
      * Execute the console command.
      *
+     * @throws Exception
      * @return mixed
      */
     public function handle()
     {
-        $class = $this->argument('model');
+        $class = $this->option('model');
+        if (!$class) {
+            throw new Exception('输入')
+            return;
+        }
         $model = new $class;
         $index = [
             'index' => config('scout.elasticsearch.prefix') . $model->searchableAs()
