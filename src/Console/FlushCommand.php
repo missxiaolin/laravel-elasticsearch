@@ -43,7 +43,7 @@ class FlushCommand extends Command
     {
         $class = $this->option('model');
         if (!$class) {
-            throw new Exception('输入')
+            throw new Exception('model is require', 300);
             return;
         }
         $model = new $class;
