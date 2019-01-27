@@ -14,7 +14,7 @@ class FlushCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'elasticsearch:flush {--model=}';
+    protected $signature = 'elasticsearch:flush {--model=} {--command=}';
 
     /**
      * The console command description.
@@ -42,6 +42,7 @@ class FlushCommand extends Command
     public function handle()
     {
         $class = $this->option('model');
+        $command = $this->option('command');
         if (!$class) {
             throw new Exception('model is require', 300);
             return;
@@ -52,5 +53,11 @@ class FlushCommand extends Command
         ];
         $client = $this->getElasticsearchClient();
         $client->indices()->delete($index);
+
+        if ($command) {
+            $this->call('scout:flush', [
+                'model' => $class
+            ]);
+        }
     }
 }
