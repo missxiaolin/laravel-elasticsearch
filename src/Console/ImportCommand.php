@@ -14,7 +14,7 @@ class ImportCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'elasticsearch:import {--model=}';
+    protected $signature = 'elasticsearch:import {--model=} {--command=}';
 
     /**
      * The console command description.
@@ -42,6 +42,7 @@ class ImportCommand extends Command
     public function handle()
     {
         $class = $this->option('model');
+        $command = $this->option('command');
         if (!$class) {
             throw new Exception('model is require', 300);
         }
@@ -110,9 +111,10 @@ class ImportCommand extends Command
             }
         }
 
-        // 导入数据
-        $this->call('scout:import', [
-            'model' => $class
-        ]);
+        if ($command) {
+            $this->call('scout:import', [
+                'model' => $class
+            ]);
+        }
     }
 }
