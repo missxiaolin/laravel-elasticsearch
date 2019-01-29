@@ -21,7 +21,7 @@ class FlushCommand extends Command
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = '删除索引';
 
     /**
      * Create a new command instance.

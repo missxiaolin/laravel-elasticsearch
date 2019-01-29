@@ -21,7 +21,7 @@ class ImportCommand extends Command
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = '增加索引';
 
     /**
      * Create a new command instance.
