@@ -45,7 +45,6 @@ class FlushCommand extends Command
         $command = $this->option('command');
         if (!$class) {
             throw new Exception('model is require', 300);
-            return;
         }
         $model = new $class;
         $index = [
